@@ -17,7 +17,7 @@ public class MyString implements CharSequence,Comparable<CharSequence> {
     public CharSequence subSequence(int s, int e) {
 		if(s < 0 || e < 0 || s >= this.length() || e >= this.length()){throw new IndexOutOfBoundsException();}
         String g = "";
-        for(int q = s; q <= e; q++) {
+        for(int q = s; q < e; q++) {
             g += data[q];
         }
         return g;
