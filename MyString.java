@@ -25,24 +25,32 @@ public class MyString implements CharSequence,Comparable<CharSequence> {
     public int compareTo(CharSequence a) {
 		if(a == null){throw new NullPointerException();}
         int wer = 0;
-        if(a.length() > this.length()) {wer = -1;}
-		else if(a.length() < this.length()) {wer = 1;}
+        if(a.length() > this.length()) {wer = 1;}
+		else if(a.length() < this.length()) {wer = -1;}
 		else{wer = 0;}
-		if(wer == -1 || wer == 0) {
+		if(a.length() == this.length()) {
 			for(int q = 0; q < this.length(); q++) {
-				if(a.toString().charAt(q) > data[q]){return -1;}
-				else if(a.toString().charAt(q) < data[q]){return 1;}
+				if(a.toString().charAt(q) > this.toString().charAt(q)) {return -1;}
+				else if(a.toString().charAt(q) < this.toString().charAt(q)) {return 1;}
 				else{q += 0;}
 			}
 			return 0;
 		}
-		else {
-			for(int q = 0; q < a.length(); q++) {
-				if(a.toString().charAt(q) > data[q]){return -1;}
-				else if(a.toString().charAt(q) < data[q]){return 1;}
+		if(wer == 1 || wer == 0) {
+			for(int q = 0; q < this.length(); q++) {
+				if(a.toString().charAt(q) > data[q]){return 1;}
+				else if(a.toString().charAt(q) < data[q]){return -1;}
 				else{q += 0;}
 			}
-			return 0;
+			return -1;
+		}
+		else {
+			for(int q = 0; q < a.length(); q++) {
+				if(a.toString().charAt(q) > data[q]){return 1;}
+				else if(a.toString().charAt(q) < data[q]){return -1;}
+				else{q += 0;}
+			}
+			return 1;
 		}
     }
     public MyString(CharSequence s) {
